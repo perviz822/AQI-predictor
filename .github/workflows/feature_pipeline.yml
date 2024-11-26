@@ -1,27 +1,37 @@
 name: Run Script Every 3 Days
-
 on:
-  push
+  schedule:
+    - cron: '0 0 */3 * *'  # Runs every 3 days
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # Allows manual triggering
 
 jobs:
   run-script:
     runs-on: macos-latest 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
-
+        uses: actions/checkout@v4  # Updated to latest version
+      
       - name: Set Up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5  # Updated to latest version
         with:
-          python-version: 3.9
-
+          python-version: '3.9'
+          cache: 'pip'  # Enable pip caching to speed up installations
+      
       - name: Install Dependencies
         env:
           API_KEY: ${{ secrets.API_KEY }}
         run: |
-          pip install --upgrade pip  # Upgrade pip to the latest version
-          pip install -r requirements.txt
-
+          python -m pip install --upgrade pip
+          pip install --upgrade setuptools wheel  # Ensure latest build tools
+          pip install -r requirements.txt --upgrade  # Force upgrade of packages
+        
+      - name: Retry Dependencies if Fail
+        if: failure()  # This will run only if previous step fails
+        run: |
+          pip install -r requirements.txt --upgrade --no-cache-dir
+      
       - name: Run the Script
         run: |
-          python feature_pipeline.py  # Replace with the name of your script
+          python feature_pipeline.py
