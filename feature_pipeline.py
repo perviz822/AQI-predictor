@@ -3,14 +3,17 @@ import requests
 import time
 from datetime import datetime, timedelta
 import csv
-from get_env_variables import load_environment_variables
+
 from tqdm import tqdm
+from dotenv import load_dotenv
+import os
 
-env_variables =  load_environment_variables(".env.weatherbit_api")
-print(env_variables)
 
-API_KEY =  env_variables.get("API_KEY")
-BASE_URL =  env_variables.get("BASE_URL")
+
+load_dotenv()
+
+API_KEY = os.getenv('API_KEY')
+BASE_URL = os.getenv('BASE_URL')
 
 LAT = 40.3777
 LON = 49.8920
