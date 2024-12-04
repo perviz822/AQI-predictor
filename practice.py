@@ -1,19 +1,12 @@
-import pandas as pd
 
-data = {
-    'timestamp': ['2022-04-30T00:00:00', '2022-04-30T01:00:00', '2022-04-30T02:00:00'],
-    'aqi': [27, 26, 25]
-}
+from dotenv import load_dotenv
+import os
+import requests
 
-df = pd.DataFrame(data)
+API_KEY =  os.getenv('API_KEY')
 
-print("Original DataFrame:")
-print(df)
-print("\nData types:")
-print(df.dtypes)
+url = f'https://api.weatherbit.io/v2.0/history/airquality?lat=35.5&lon=-78.0&start_date=2024-11-29&end_date=2024-11-30&tz=local&key={API_KEY}'
 
-df['timestamp'] = pd.to_datetime(df['timestamp'])
-print("\nDataFrame after conversion:")
-print(df)
-print("\nNew data types:")
-print(df.dtypes)
+
+
+print(requests.get(url).json())

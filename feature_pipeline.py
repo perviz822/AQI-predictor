@@ -14,6 +14,7 @@ load_dotenv()
 # Get API configurations
 API_KEY = os.getenv('API_KEY')
 BASE_URL = os.getenv('BASE_URL')
+print(BASE_URL)
 
 # Coordinates for Baku
 LAT = 40.3777
@@ -21,7 +22,7 @@ LON = 49.8920
 
 # Date range for data fetching
 END_DATE = datetime.now()
-START_DATE = datetime(2022, 1, 13)
+START_DATE = datetime(2024, 12, 2)
 
 def fetch_daily_data(date):
     """
@@ -59,10 +60,9 @@ def main():
     total_days = (END_DATE - START_DATE).days + 1
 
     try:
-        with open(csv_file, "w", newline='', encoding='utf-8') as file:
+        with open(csv_file, "a", newline='', encoding='utf-8') as file:
             writer = csv.writer(file)  
-            writer.writerow(csv_headers) 
-            
+          
             pbar = tqdm(total=total_days, desc="Fetching data", unit="day")
             current_date = START_DATE
             
@@ -81,11 +81,13 @@ def main():
                             hour_data.get('pm25', ''),
                             hour_data.get('pm10', '')
                         ]
+                        print("the row")
                         writer.writerow(row)
+                        print('the row was written')
                 
                 current_date += timedelta(days=1)
                 pbar.update(1) 
-                time.sleep(1)  # Respect API rate limits
+
             
             pbar.close()
         
