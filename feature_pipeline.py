@@ -5,12 +5,19 @@ import csv
 import sys
 
 from tqdm import tqdm
-from dotenv import load_dotenv
+
 import os
 import pandas as pd
 
 
 # Load environment variables
+
+
+# Get API configurations
+API_KEY = os.environ('API_KEY')
+BASE_URL = os.environ('BASE_URL')
+
+
 # Coordinates for Baku
 LAT = 40.3777
 LON = 49.8920
