@@ -11,14 +11,6 @@ import pandas as pd
 
 
 # Load environment variables
-load_dotenv()
-
-# Get API configurations
-API_KEY = os.getenv('API_KEY')
-BASE_URL = os.getenv('BASE_URL')
-print(API_KEY)
-print(BASE_URL)
-
 # Coordinates for Baku
 LAT = 40.3777
 LON = 49.8920
