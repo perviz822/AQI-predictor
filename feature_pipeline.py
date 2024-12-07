@@ -15,7 +15,7 @@ import pandas as pd
 
 # Get API configurations
 API_KEY = os.environ.get('API_KEY')
-BASE_URL = os.environ.get('BASE_URL')
+
 
 
 # Coordinates for Baku
@@ -58,7 +58,7 @@ def fetch_daily_data(date):
             "tz": "local"
         }
         
-        response = requests.get(BASE_URL, params=params)
+        response = requests.get('https://api.weatherbit.io/v2.0/history/airquality/', params=params)
         response.raise_for_status()  # Raise an exception for bad status codes
         
         return response.json()
