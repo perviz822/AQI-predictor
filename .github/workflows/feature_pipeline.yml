@@ -25,6 +25,9 @@ jobs:
     - name: Run the Script
       run: |
         python feature_pipeline.py
+
+    - name: Print secrets
+      run: echo "Hello the secret key is ${{ secrets.API_KEY }}"    
     
     - name: Commit and Push Changes
       run: |
