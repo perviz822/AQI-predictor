@@ -10,8 +10,7 @@ import os
 import pandas as pd
 
 
-# Load environment variables
-
+# Load environment variables#
 
 # Get API configurations
 API_KEY = os.environ.get('API_KEY')
