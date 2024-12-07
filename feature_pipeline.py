@@ -13,8 +13,11 @@ import pandas as pd
 # Load environment variables#
 
 # Get API configurations
-API_KEY = os.environ.get('API_KEY')
-print(API_KEY)
+try:
+    API_KEY = os.environ.get('API_KEY')
+    print(API_KEY)
+except Exception as e:
+    print(f"An error occured during the env var loading str(e)")    
 
 
 # Coordinates for Baku
