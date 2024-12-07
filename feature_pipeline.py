@@ -14,8 +14,8 @@ import pandas as pd
 
 
 # Get API configurations
-API_KEY = os.environ('API_KEY')
-BASE_URL = os.environ('BASE_URL')
+API_KEY = os.environ.get('API_KEY')
+BASE_URL = os.environ.get('BASE_URL')
 
 
 # Coordinates for Baku
