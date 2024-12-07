@@ -1,41 +1,39 @@
-
 name: Run Script Every 3 Days
-
 on:
- push
+  push:
 
 env:
   API_KEY: ${{ secrets.API_KEY }}
   BASE_URL: ${{ secrets.BASE_URL }}
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 jobs:
   run-script:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v3
-
+    
     - name: Set Up Python
       uses: actions/setup-python@v4
       with:
-        python-version: 3.13.0
-
+        python-version: 3.11
+    
     - name: Install Dependencies
-     
       run: |
-        pip install -r requirements.txt  # If your script has dependencies
-
+        pip install -r requirements.txt
+    
     - name: Run the Script
       run: |
-        python feature_pipeline.py  # Replace with the name of your script
-  
+        python feature_pipeline.py
+    
     - name: Commit and Push Changes
       run: |
-          git config --local user.email "perviz822@gmail.com"
-          git config --local user.name "Parviz"
+        git config --local user.email "perviz822@gmail.com"
+        git config --local user.name "Parviz"
+        
+        # Check if there are changes to baku_aqi.csv
+        if [[ -n "$(git status --porcelain baku_aqi.csv)" ]]; then
           git add baku_aqi.csv
           git commit -m "AQI data was updated"
           git push
-      
-    
-          
+        fi
