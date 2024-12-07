@@ -26,17 +26,14 @@ jobs:
     - name: Run the Script
       run: |
         python feature_pipeline.py  # Replace with the name of your script
-
-        - name: Set up Git configuration
-        run: |
-          git config --global user.name "Parviz822"
-          git config --global user.email "perviz822@gmail.com"
   
     - name: Commit and Push Changes
       run: |
-
-          git add baku_air_quality_data.csv  # The path to your CSV file
-          git diff --cached --quiet || git commit -m "Update air quality data CSV"
-          git push origin HEAD:main  # Replace 'main' with your branch name if needed
+          git config --local user.email "perviz822@gmail.com"
+          git config --local user.name "Parviz"
+          git add baku_aqi.csv
+          git commit -m "AQI data was updated"
+          git push
+      
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}     

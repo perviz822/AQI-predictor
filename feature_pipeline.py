@@ -7,6 +7,8 @@ import sys
 from tqdm import tqdm
 from dotenv import load_dotenv
 import os
+import pandas as pd
+
 
 # Load environment variables
 load_dotenv()
@@ -21,8 +23,20 @@ LAT = 40.3777
 LON = 49.8920
 
 # Date range for data fetching
-END_DATE = datetime.now()
-START_DATE = datetime(2024, 12, 2)
+
+
+
+df = pd.read_csv('baku_aqi.csv')
+date_values =  df['timestamp'].values
+df['timestamp'] = pd.to_datetime(df['timestamp'], errors='coerce')
+last_timestamp = df['timestamp'].iloc[-1]
+
+
+
+
+
+END_DATE = datetime(2023,4,15)
+START_DATE =last_timestamp
 
 def fetch_daily_data(date):
     """
@@ -54,15 +68,19 @@ def fetch_daily_data(date):
         return None
 
 def main():
+   # 2024-12-03T20:00:00
     # CSV file configuration
-    csv_file = "baku_air_quality_data.csv"        
-    csv_headers = ["timestamp", "aqi", "o3", "so2", "no2", "co", "pm25", "pm10"]     
+    csv_file = "baku_aqi.csv"        
+    csv_headers = ["timestamp", "aqi", "o3", "so2", "no2", "co", "pm25", "pm10"] 
+    print(START_DATE)    
     total_days = (END_DATE - START_DATE).days + 1
+    print(total_days)
+    
 
     try:
-        with open(csv_file, "a", newline='', encoding='utf-8') as file:
+        
+        with open(csv_file,'a',newline='') as file:
             writer = csv.writer(file)  
-          
             pbar = tqdm(total=total_days, desc="Fetching data", unit="day")
             current_date = START_DATE
             
@@ -81,8 +99,11 @@ def main():
                             hour_data.get('pm25', ''),
                             hour_data.get('pm10', '')
                         ]
-                        print("the row")
-                        writer.writerow(row)
+                        print(row)
+                        
+                        if row[0] not in date_values:
+                         writer.writerow(row)
+                        
                         print('the row was written')
                 
                 current_date += timedelta(days=1)
@@ -90,6 +111,7 @@ def main():
 
             
             pbar.close()
+            file.close()
         
         print(f"Data saved to {csv_file}")
     
@@ -98,4 +120,10 @@ def main():
         sys.exit(1)
 
 if __name__ == "__main__":
-    main()
+    main() 
+
+
+
+
+    
+    
