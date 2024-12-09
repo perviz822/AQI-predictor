@@ -4,6 +4,7 @@ import pickle
 
 import streamlit as st
 st.set_page_config(layout="wide")
+#
 def display_aqi_prediction_page():
    
     st.markdown(
