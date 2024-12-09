@@ -134,7 +134,7 @@ def display_aqi_prediction_page():
         st.write("")
         st.write("")
         st.write("")
-        st.plotly_chart(fig, use_container_width=False)
+        st.plotly_chart(fig, use_container_width=True)
 
     with col2:
         st.write("")
