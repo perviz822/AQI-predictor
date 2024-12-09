@@ -3,6 +3,7 @@ import time
 from datetime import datetime, timedelta
 import csv
 import sys
+from dotenv import load_dotenv
 
 from tqdm import tqdm
 
@@ -14,7 +15,8 @@ import pandas as pd
 
 # Get API configurations
 try:
-    API_KEY = os.environ.get('API_KEY')
+    load_dotenv()
+    API_KEY = os.getenv('API_KEY')
     print(API_KEY)
 except Exception as e:
     print(f"An error occured during the env var loading str(e)")    
@@ -37,7 +39,7 @@ last_timestamp = df['timestamp'].iloc[-1]
 
 
 
-END_DATE = datetime(2023,4,15)
+END_DATE = datetime.now()
 START_DATE =last_timestamp
 
 def fetch_daily_data(date):
