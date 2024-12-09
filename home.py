@@ -105,7 +105,7 @@ def display_aqi_prediction_page():
             yaxis_title='Air Quality Index',
             template='plotly_white',
             height=200,
-            width=500,
+            width=700,
             hovermode='closest',
         )
         return fig
@@ -126,7 +126,7 @@ def display_aqi_prediction_page():
     fig.update_layout(title='Daily Average AQI for Baku', yaxis_title='Average AQI', title_x=0.5, template='plotly_white')
 
     with col1:
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig)
         loaded_df = pickle.load(open('predictions_for_three_days.pkl', 'rb'))
         clean_fig = create_clean_aqi_plot(daily_aqi, loaded_df)
        
