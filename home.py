@@ -3,9 +3,9 @@ import plotly.graph_objs as go
 import pickle
 
 import streamlit as st
-
+st.set_page_config(layout="wide")
 def display_aqi_prediction_page():
-    st.set_page_config(layout="wide")
+   
     st.markdown(
     """
     <style>
