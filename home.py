@@ -103,7 +103,7 @@ def display_aqi_prediction_page():
             yaxis_title='Air Quality Index',
             template='plotly_white',
             height=450,
-            width=800,
+            width=1000,
             hovermode='closest',
         )
         return fig
