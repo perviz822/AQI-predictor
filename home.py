@@ -3,13 +3,10 @@ import plotly.graph_objs as go
 import pickle
 
 import streamlit as st
-from size import get_screen_width
+
 
 #
 def display_aqi_prediction_page():
-    rspheight=700;
-    if get_screen_width() <400:
-        rspheight=500
    
     st.markdown(
     """
@@ -109,7 +106,7 @@ def display_aqi_prediction_page():
             xaxis_title='Date',
             yaxis_title='Air Quality Index',
             template='plotly_white',
-            height=rspheight,
+            height=450,
             width=700,
             hovermode='closest',
         )
@@ -131,11 +128,11 @@ def display_aqi_prediction_page():
     fig.update_layout(title='Daily Average AQI for Baku', yaxis_title='Average AQI', title_x=0.5, template='plotly_white')
 
     with col1:
-        st.plotly_chart(fig,use_container_width=True,width=450,height=rspheight)
+        st.plotly_chart(fig,use_container_width=True,width=450,height=700)
         loaded_df = pickle.load(open('predictions_for_three_days.pkl', 'rb'))
         clean_fig = create_clean_aqi_plot(daily_aqi, loaded_df)
        
     with col2:
             
-       st.plotly_chart(clean_fig,use_container_width=True,width=450,height=rspheight)
+       st.plotly_chart(clean_fig,use_container_width=True,width=450,height=700)
        
