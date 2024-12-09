@@ -103,7 +103,7 @@ def display_aqi_prediction_page():
             yaxis_title='Air Quality Index',
             template='plotly_white',
             height=450,
-            width=1000,
+            width=800,
             hovermode='closest',
         )
         return fig
@@ -128,7 +128,16 @@ def display_aqi_prediction_page():
         st.plotly_chart(fig, use_container_width=True)
 
     with col2:
-       
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("") 
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
         loaded_df = pickle.load(open('predictions_for_three_days.pkl', 'rb'))
         clean_fig = create_clean_aqi_plot(daily_aqi, loaded_df)
-        st.plotly_chart(clean_fig, use_container_width=True)
+        st.plotly_chart(clean_fig.update_layout(height=400,width=800), use_container_width=True,)
