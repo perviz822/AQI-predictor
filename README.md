@@ -58,9 +58,49 @@ Steps:
    ![1733777728093](images/README/1733777728093.png)
    Residuals closely follows a normal distribution
    7. **Model summary**
-   ![1733778100636](images/README/1733778100636.png)
+
+
+   | Metric                 | Value            |
+   | ---------------------- | ---------------- |
+   | Dependent Variable     | - 1047           |
+   | Model                  | ARIMA(1, 0, 0)   |
+   | Date                   | Mon, 09 Dec 2024 |
+   | Time                   | 21:53:01         |
+   | Sample                 | 0                |
+   | No. Observations       | 1047             |
+   | Log Likelihood         | 11.940           |
+   | AIC                    | -17.881          |
+   | BIC                    | -3.020           |
+   | HQIC                   | -12.245          |
+   | Covariance Type        | opg              |
+   | coef                   | 4.1411           |
+   | std err                | 0.018            |
+   | z                      | 233.270          |
+   | P>                     | z                |
+   | [0.025 0.975]          | [4.106 4.176]    |
+   | ar.L1                  | 0.5810           |
+   | 0.025                  | 23.012           |
+   | 0.000                  | 0.532            |
+   | 0.631                  | -                |
+   | sigma2                 | 0.0572           |
+   | 0.002                  | 26.479           |
+   | 0.000                  | 0.053            |
+   | 0.061                  | -                |
+   | Ljung-Box (L1) (Q)     | 0.41             |
+   | Jarque-Bera (JB)       | 69.51            |
+   | Prob(Q)                | 0.52             |
+   | Prob(JB)               | 0.00             |
+   | Heteroskedasticity (H) | 0.82             |
+   | Prob(H) (two-sided)    | 0.07             |
+   | Skew                   | 0.19             |
+   | Kurtosis               | 4.21             |
+
+
+   |  |  |  |
+   | - | - | - |
 
    Key insignts
+
 
    * **Model Fit**:
      * The ARIMA(1, 0, 0) fits the data reasonably well, as suggested by low AIC and BIC values.
