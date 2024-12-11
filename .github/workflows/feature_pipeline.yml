@@ -28,6 +28,10 @@ jobs:
 
     - name: Print secrets
       run: echo "Hello the secret key is ${{ secrets.API_KEY }}"    
+
+    - name: Jupyter Notebook  Execution
+      run: jupyter execute training_pipeline.ipynb
+      shell: bash
     
     - name: Commit and Push Changes
       run: |
