@@ -40,7 +40,7 @@ jobs:
         
         # Check if there are changes to baku_aqi.csv
         if [[ -n "$(git status --porcelain baku_aqi.csv)" ]]; then
-          git add baku_aqi.csv
+          git add baku_aqi.csv training_pipeline.ipynb
           git commit -m "AQI data was updated"
           git push
         fi
