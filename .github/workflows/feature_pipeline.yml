@@ -1,6 +1,7 @@
 name: Run Script Every 3 Days
 on:
-  push:
+  schedule:
+  - cron: "0 12 */3 * *"
 
 env:
   API_KEY: ${{ secrets.API_KEY }}
