@@ -33,8 +33,6 @@ jobs:
       run: jupyter execute training_pipeline.ipynb
       shell: bash
 
-    - name: Run streamlit app  
-      run: streamlit run app.py
     
     - name: Commit and Push Changes
       run: |
