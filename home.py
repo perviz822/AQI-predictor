@@ -129,7 +129,7 @@ def display_aqi_prediction_page():
 
     with col1:
         st.plotly_chart(fig,use_container_width=True,width=450,height=700)
-        loaded_df = pickle.load(open('predictions_for_three_days.pkl', 'rb'))
+        loaded_df = pd.read_csv('predictions.csv')
         clean_fig = create_clean_aqi_plot(daily_aqi, loaded_df)
        
     with col2:
