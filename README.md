@@ -15,7 +15,7 @@ Rolling forecasting is a method used to make predictions by using past data in a
 
 The application is built on two main pipelines.
 
-1. Feature pipeline
+1. Data Ingestion pipeline
 2. Training pipeline
 
 *Feature pipeline* is responsible for sending request to an api,  for the historical AQI data. This pipeline is run once in three days  by github actions, it updates  the historical dataset, for training.
