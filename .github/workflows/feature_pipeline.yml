@@ -25,7 +25,7 @@ jobs:
     
     - name: Run the Script
       run: |
-        python feature_pipeline.py
+        python data_ingestion_pipeline.py
 
     - name: Print secrets
       run: echo "Hello the secret key is ${{ secrets.API_KEY }}"    
