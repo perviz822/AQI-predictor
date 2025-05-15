@@ -131,7 +131,7 @@ def display_aqi_prediction_page():
         st.plotly_chart(fig,use_container_width=True,width=450,height=700)
         loaded_df = pd.read_csv('predictions.csv')
         loaded_df.set_index(loaded_df['Date'],inplace=True)
-        clean_fig = create_clean_aqi_plot(daily_aqi, loaded_df)
+        clean_fig = create_clean_aqi_plot(daily_aqi, loaded_df.tail(3))
        
     with col2:
             
